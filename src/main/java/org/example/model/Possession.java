@@ -4,7 +4,7 @@ import java.time.LocalDate;
 
 public sealed abstract class Possession permits Argent, Materiel, TrainDeVie {
     private final String libelle;
-    private final LocalDate dateDebut;
+    protected LocalDate dateDebut;
 
     public Possession(String libelle, LocalDate dateDebut) {
         this.libelle = libelle;
