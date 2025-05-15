@@ -1,5 +1,3 @@
 package org.example.model;
 
-public record Personne (String nom){
-
-}
+public record Personne (String nom){ }

@@ -1,27 +1,16 @@
 package org.example.model;
 
-import java.time.LocalDate;
+import lombok.AllArgsConstructor;
+import lombok.Data;
 
-public final class Argent extends Possession {
+@Data
+@AllArgsConstructor
+public final class Argent {
     private double montant;
+    private Devise devise;
 
-    public Argent(String libelle, LocalDate dateDebut,double montant) {
-        super(libelle, dateDebut);
-        this.montant = montant;
-    }
-
-    @Override
-    public double getValeurActuelle(LocalDate dateEvaluation) {
-        return montant;
-    }
-
-    public void retirer(double montant) {
-        if (montant <= this.montant) {
-            this.montant -= montant;
-        }
-    }
-
-    public void ajouter(double montant) {
-        this.montant += montant;
+    public double getMontantEnAriary() {
+        return devise.convertirEnAriary(montant);
     }
 }
+

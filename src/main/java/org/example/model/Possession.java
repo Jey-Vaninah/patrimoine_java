@@ -1,25 +1,18 @@
 package org.example.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+
 import java.time.LocalDate;
 
-public sealed abstract class Possession permits Argent, Materiel, TrainDeVie {
-    private final String libelle;
-    protected LocalDate dateDebut;
+@Data
+@AllArgsConstructor
+public  abstract sealed class Possession permits Compte, Materiel, TrainDeVie {
+    protected String nomDeLaPossession;
+    protected LocalDate aDateDe;
+    protected Argent valeur;
 
-    public Possession(String libelle, LocalDate dateDebut) {
-        this.libelle = libelle;
-        this.dateDebut = dateDebut;
-    }
-
-    public String getLibelle() {
-        return libelle;
-    }
-
-    public LocalDate getDateDebut() {
-        return dateDebut;
-    }
-
-    public abstract double getValeurActuelle(LocalDate dateEvaluation);
+    public abstract Possession projectionFucture(LocalDate dateFuture);
 }
 
 
